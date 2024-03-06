@@ -40,7 +40,7 @@ public class Loja {
             referencedColumnName = "ID_TIPO_VEICULO"
             , foreignKey = @ForeignKey(name = "FK_TIPO_VEICULO")
     )
-    private Sabor sabor;
+    private Loja loja;
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
