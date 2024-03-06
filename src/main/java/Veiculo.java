@@ -6,31 +6,51 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name = "TB_SABOR")
+@Table(name = "TB_PIZZARIA")
 public class Veiculo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_SABOR")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PIZZARIA")
     @SequenceGenerator(
-            name = "SQ_SABOR",
-            sequenceName = "SQ_SABOR",
+            name = "SQ_PIZZARIA",
+            sequenceName = "SQ_PIZZARIA",
             initialValue = 1,
             allocationSize = 1
     )
-    @Column(name = "ID_SABOR")
+    @Column(name = "ID_PIZZARIA")
     private Long id;
 
 
-    @Column(name = "NM_SABOR")
+    @Column(name = "NM_PIZZARIA")
     private String nome;
 
-    @Column(name = "DS_SABOR")
-    private String descricao;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "TB_CARDAPIO",
+            joinColumns = {
+                    @JoinColumn(
+                            name = "PIZZARIA",
+                            referencedColumnName = "ID_PIZZARIA",
+                            foreignKey = @ForeignKey(name = "FK_PIZZARIA_CARDAPIO")
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(
+                            name = "PRODUTO",
+                            referencedColumnName = "ID_PRODUTO",
+                            foreignKey = @ForeignKey(name = "FK_CARDAPIO_PIZZARIA")
+                    )
+            }
+    )
+    private Set<Produto> cardapio = new LinkedHashSet<>();
 
 
 }
