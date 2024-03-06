@@ -13,13 +13,13 @@ import org.springframework.data.annotation.Id;
 public class Veiculo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PIZZARIA")
-    @SequenceGenerator(
-            name = "SQ_PIZZARIA",
-            sequenceName = "SQ_PIZZARIA",
-            initialValue = 1,
-            allocationSize = 1
-    )
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PIZZARIA")
+//    @SequenceGenerator(
+//            name = "SQ_PIZZARIA",
+//            sequenceName = "SQ_PIZZARIA",
+//            initialValue = 1,
+//            allocationSize = 1
+//    )
     @Column(name = "ID_PIZZARIA")
     private Long id;
 
