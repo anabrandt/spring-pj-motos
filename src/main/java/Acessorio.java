@@ -14,7 +14,6 @@ public class Veiculo {
 
     @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PIZZARIA")
-//    @SequenceGenerator(
 //            name = "SQ_PIZZARIA",
 //            sequenceName = "SQ_PIZZARIA",
 //            initialValue = 1,
